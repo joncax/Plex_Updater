@@ -1,0 +1,23 @@
+{
+    "telegram": {
+        "bot_token": "bot_toke_bot_token_bot_toke",
+        "chat_id": "chat_id_chat_id"
+    },
+    "monitored_folders": [
+        "C:\\01-MOVIES",
+        "C:\\02-TV_Series"
+    ],
+    "app_settings": {
+        "log_file": "plex_updated.log",
+        "folder_list_file": "folder_list.json",
+        "max_telegram_message_length": 3500,
+        "send_no_change_message": false,
+        "heartbeat_enable": true,
+        "heartbeat_interval_hours": 6
+
+    },
+    "omdb_api": {
+        "api_key": "api_key_api_key",
+        "posters_directory": "posters"
+    }
+}
