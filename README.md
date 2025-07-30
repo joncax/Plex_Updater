@@ -19,8 +19,8 @@ Say goodbye to manually checking your Plex library for new content!
 - **Persistent Data Storage:** Uses 'folder_list.json' to track folder states and 'media_metadata.json' to cache OMDb data, ensuring continuity between runs.
 
 - **Interactive Telegram Commands:**
-    - ''/start'': Greets you and provides a custom keyboard menu for easy navigation.
-    - '/help': Displays a list of all available commands.
+    - '''/start''': Greets you and provides a custom keyboard menu for easy navigation.
+    - "'/help'": Displays a list of all available commands.
     - '/status': Shows the bot's last scan time, total unique items, and a detailed breakdown of folders per monitored path.
     - '/update': Manually triggers an immediate scan for changes.
     - '/search <query>': Search for movies/series by title (supports partial matches, e.g., '/search China').
