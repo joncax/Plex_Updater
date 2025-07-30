@@ -16,23 +16,23 @@ Say goodbye to manually checking your Plex library for new content!
 
 - **OMDb Metadata Integration:** Automatically fetches comprehensive movie/series metadata (plot, genre, poster URL, IMDb ID) using the OMDb API.
 - **Local Poster Management:** Downloads and stores movie/series posters locally, and cleans them up when media is removed.
-- **Persistent Data Storage:** Uses 'folder_list.json' to track folder states and 'media_metadata.json' to cache OMDb data, ensuring continuity between runs.
+- **Persistent Data Storage:** Uses ````folder_list.json```` to track folder states and ````media_metadata.json```` to cache OMDb data, ensuring continuity between runs.
 
 - **Interactive Telegram Commands:**
     - ````/start````: Greets you and provides a custom keyboard menu for easy navigation.
-    - "'/help'": Displays a list of all available commands.
-    - '/status': Shows the bot's last scan time, total unique items, and a detailed breakdown of folders per monitored path.
-    - '/update': Manually triggers an immediate scan for changes.
-    - '/search <query>': Search for movies/series by title (supports partial matches, e.g., '/search China').
-    - '/recent <number>': Lists the 'N' most recently added items (e.g., '/recent 5').
+    - ````/help````: Displays a list of all available commands.
+    - ````/status````: Shows the bot's last scan time, total unique items, and a detailed breakdown of folders per monitored path.
+    - ````/update````: Manually triggers an immediate scan for changes.
+    - ````/search <query>````: Search for movies/series by title (supports partial matches, e.g., ````/search China````).
+    - ````/recent <number>````: Lists the 'N' most recently added items (e.g., ````/recent 5````).
 - **Telegram Heartbeat:** A configurable feature that sends periodic "I'm alive!" messages to confirm the bot is running and connected.
 - **Windows Service Deployment:** Configured to run reliably in the background as a Windows Service using NSSM, ensuring automatic startup and crash recovery.
 
 ### ⚙️ How It Works
-1. **Initialization:** The bot starts, loads configuration from 'config.json', and sets up logging.
-2. **Scanning:** It periodically (or on manual '/update') scans your configured media folders.
-3. **Comparison:** It compares the current state of your folders with the last saved state ('folder_list.json').
-4. **Metadata & Posters:** For any new folders, it parses the folder name to extract title and year, queries the OMDb API for metadata, and downloads the corresponding poster. This data is cached in 'media_metadata.json'.
+1. **Initialization:** The bot starts, loads configuration from ````config.json````, and sets up logging.
+2. **Scanning:** It periodically (or on manual ````/update````) scans your configured media folders.
+3. **Comparison:** It compares the current state of your folders with the last saved state (````folder_list.json````).
+4. **Metadata & Posters:** For any new folders, it parses the folder name to extract title and year, queries the OMDb API for metadata, and downloads the corresponding poster. This data is cached in ````media_metadata.json````.
 5. **Notifications:** Based on detected changes (additions or removals), it constructs rich Telegram messages (with posters for new content) and sends them to your designated chat.
 6. **Persistence:** The updated folder state and media metadata cache are saved back to their respective JSON files for the next run.
 7.**Heartbeat:** If enabled, a periodic message is sent to confirm the bot's operational status.
@@ -42,21 +42,23 @@ Say goodbye to manually checking your Plex library for new content!
 Follow these steps to set up and run your Plex Updater Bot.
 
 #### Prerequisites
-    - Before you begin, ensure you have the following:
+- Before you begin, ensure you have the following:
     - **Python 3.8+:** Download from python.org.
     - **Telegram Bot Token:** Create a new bot by chatting with @BotFather on Telegram.
-    - **Telegram Group Chat ID:** Add your bot to a Telegram group. Then, send /id to @RawDataBot in that group to get its chat ID (it will be a negative number, e.g., -1234567890).
+    - **Telegram Group Chat ID:** Add your bot to a Telegram group. Then, send ````/id```` to @RawDataBot in that group to get its chat ID (it will be a negative number, e.g., ````-1234567890````).
     - **OMDb API Key:** Get a free API key from OMDb API.
-    - **NSSM (Non-Sucking Service Manager):** Download the latest stable release from nssm.cc/download. Extract the '.zip' file to a convenient location (e.g., 'C:\NSSM').
+    - **NSSM (Non-Sucking Service Manager):** Download the latest stable release from nssm.cc/download. Extract the ````.zip```` file to a convenient location (e.g., ````C:\NSSM````).
 
 1. **Project Setup**
-    1. **Create Project Directory:** Create a dedicated folder for your bot, e.g., 'C:\Scripts\Plex_Updater'.
-    2. **Download Files:** Place all the bot's Python script files ('main.py', 'config_manager.py', 'telegram_notifier.py', 'media_scraper.py', 'telegram_bot_handler.py') into this directory.
+    1. **Create Project Directory:** Create a dedicated folder for your bot, e.g., ````C:\Scripts\Plex_Updater````.
+    2. **Download Files:** Place all the bot's Python script files (````main.py````, ````config_manager.py````, ````telegram_notifier.py````, ````media_scraper.py````, ````telegram_bot_handler.py````) into this directory.
     3. **Install Python Dependencies:** Open a command prompt or PowerShell, navigate to your project directory, and run:
 
-    '''pip install python-telegram-bot aiohttp'''
+    ````
+    pip install python-telegram-bot aiohttp
+    ````
 
-2. **Configuration** ('config.json')
+3. **Configuration** ('config.json')
 Create a file named 'config.json' in your project directory ('C:\Scripts\Plex_Updater') with the following content. **Remember to replace the placeholder values with your actual tokens, IDs, and paths.**
 
 '''{
